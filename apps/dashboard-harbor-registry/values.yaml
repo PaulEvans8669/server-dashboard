@@ -46,21 +46,16 @@ harbor:
       annotations:
         # note different ingress controllers may require a different ssl-redirect annotation
         # for Envoy, use ingress.kubernetes.io/force-ssl-redirect: "true" and remove the nginx lines below
-        ingress.kubernetes.io/ssl-redirect: "true"
-        ingress.kubernetes.io/proxy-body-size: "0"
-        nginx.ingress.kubernetes.io/ssl-redirect: "true"
-        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        cert-manager.io/cluster-issuer: dashboard-issuer
       notary:
         # notary-specific annotations
-        annotations:
-          kubernetes.io/ingress.class: "nginx"
-          cert-manager.io/cluster-issuer: dashboard-issuer
+        annotations: {}
 
       harbor:
         # harbor ingress-specific annotations
-        annotations:
-          kubernetes.io/ingress.class: "nginx"
-          cert-manager.io/cluster-issuer: dashboard-issuer
+        annotations: {}
 
     clusterIP:
       # The name of ClusterIP service
