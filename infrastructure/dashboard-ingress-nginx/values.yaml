@@ -1,2 +1,7 @@
 ingress-nginx:
   installCRDs: true
+  rbac:
+    create: true
+  controller:
+    kind: DaemonSet
+    hostNetwork: true
