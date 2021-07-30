@@ -5,3 +5,4 @@ ingress-nginx:
   controller:
     kind: DaemonSet
     hostNetwork: true
+    enableTLSPassthrough: true
